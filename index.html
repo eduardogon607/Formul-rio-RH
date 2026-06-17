@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,368 +7,285 @@
 <title>Cadastro de Colaborador</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:#f4f9ff;padding:30px}
-.container{max-width:900px;margin:auto;background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,.1)}
-.header{position:relative}
-.header img{width:100%;height:220px;object-fit:cover}
-.header h1{position:absolute;bottom:20px;left:20px;color:#fff;text-shadow:0 2px 5px rgba(0,0,0,.5)}
-form{padding:30px}
-.form-group{margin-bottom:25px}
-label{display:block;margin-bottom:8px;color:#1f4f82;font-weight:600}
-input[type=text],textarea{width:100%;padding:12px;border:2px solid #d8e8ff;border-radius:10px}
-textarea{min-height:100px;resize:vertical}
-input[type=file]{width:100%;padding:10px;border:2px dashed #8dc6ff;border-radius:10px;background:#f8fbff}
-button[type=submit]{width:100%;padding:15px;background:#4da6ff;color:#fff;border:none;border-radius:10px;font-size:17px;font-weight:bold;cursor:pointer}
-.preview{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-.preview-item{position:relative}
-.preview-item img{width:90px;height:90px;object-fit:cover;border-radius:8px;border:2px solid #cce4ff}
-.btn-remover{position:absolute;top:-8px;right:-8px;width:24px;height:24px;border:none;border-radius:50%;background:#e53935;color:#fff;cursor:pointer}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { background: #f4f9ff; padding: 30px; }
+.container { max-width: 900px; margin: auto; background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,.1); }
+.header { position: relative; }
+.header img { width: 100%; height: 220px; object-fit: cover; }
+.header h1 { position: absolute; bottom: 20px; left: 20px; color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,.5); }
+form { padding: 30px; }
+.form-group { margin-bottom: 25px; }
+label { display: block; margin-bottom: 8px; color: #1f4f82; font-weight: 600; }
+input[type=text], textarea, select { width: 100%; padding: 12px; border: 2px solid #d8e8ff; border-radius: 10px; background: #fff; font-size: 15px; }
+textarea { min-height: 100px; resize: vertical; }
+input[type=file] { width: 100%; padding: 10px; border: 2px dashed #8dc6ff; border-radius: 10px; background: #f8fbff; cursor: pointer; }
+button[type=submit] { width: 100%; padding: 15px; background: #4da6ff; color: #fff; border: none; border-radius: 10px; font-size: 17px; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+button[type=submit]:hover { background: #358ee0; }
+.preview { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.preview-item { position: relative; }
+.preview-item img { width: 90px; height: 90px; object-fit: cover; border-radius: 8px; border: 2px solid #cce4ff; }
+.btn-remover { position: absolute; top: -8px; right: -8px; width: 24px; height: 24px; border: none; border-radius: 50%; background: #e53935; color: #fff; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; }
 </style>
 </head>
 <body>
+
 <div class="container">
-<div class="header">
-<img src="combitrans-BalsaSW.jpg" alt="Cabeçalho">
-<h1>Cadastro de Colaborador</h1>
-</div>
+    <div class="header">
+        <img src="combitrans-BalsaSW.jpg" alt="Cabeçalho">
+        <h1>Cadastro de Colaborador</h1>
+    </div>
 
-<form id="formColaborador">
-<div class="form-group">
-<label>Nome Completo *</label>
-<input list="listaNomes" id="nomeCompleto" required>
-<datalist id="listaNomes">
-<option value="ADALBERTO SANTANA RODRIGUES"><option value="ADRIAN CLAY MELO SILVA"><option value="ADRIAN LORRAN DOS SANTOS DA SILVA"><option value="ADRIANO DOS SANTOS MONTEIRO"><option value="ADRIANO JACKSON DE SOUZA LUZ"><option value="ALEKESANDRO DA CONCEICAO PASTANA"><option value="ALESSANDRA DA CONCEICAO PASTANA"><option value="ALESSANDRO ANDRADE DA SILVA"><option value="ALESSANDRO VEIGA DE SOUZA JUNIOR"><option value="ALEX CONCEICAO JERONIMO"><option value="ALEX TEODORO PIEDADE"><option value="ALEXANDRE DA SILVA OLIVEIRA"><option value="ALLYSON YAGO BARROS DE OLIVEIRA"><option value="ANA LUCIA VELASCO ANDRADE"><option value="ANA PAULA ALMEIDA FARIAS"><option value="ANANIAS MARINHO ARAUJO JUNIOR"><option value="ANDERSON ANDRE LIMA DA SILVA"><option value="ANDERSON BRUNO DE SOUZA SANTOS"><option value="ANDERSON DE MIRANDA DE CASTRO"><option value="ANDERSON PAULO FERREIRA PEREIRA"><option value="ANDREZA AMARAL MIRANDA"><option value="ANNA CLARA SARMENTO AIRES"><option value="ANTONIA ELCICLEIA LAMEIRA DO VALE"><option value="ANTONIO AGUINALDO DO NASCIMENTO JUNIOR"><option value="ANTONIO ANASTACIO MARQUES FILHO"><option value="ANTONIO CARLOS DE ASSUNCAO"><option value="ANTONIO FERNANDO DE SOUSA TOMAZ"><option value="ANTÔNIO JOSÉ GOMES MIRANDA"><option value="ANTONIO RODRIGO DE ALMEIDA ALMEIDA"><option value="ANTONIO SOUSA SALES"><option value="AQUILA DE SOUSA PAIVA"><option value="ARLIELSON SANTOS DE MORAES"><option value="ARTHUR SILVA QUARESMA"><option value="AUGUSTO SERGIO PIRES DOS SANTOS"><option value="BEATRIZ DO SOCORRO PEIXOTO RIBEIRO"><option value="BEATRIZ SILVA DE AMARAL"><option value="BENEDITO DOS SANTOS FERREIRA"><option value="BRENDO DIAS VIEIRA"><option value="BRUNO LAION MENDES ALVES"><option value="BRUNO NEVES DE SOUZA"><option value="CAIO SILVA DA MATA"><option value="CAMILY VITORIA DO ROSARIO NAVEGANTES"><option value="CARLOS AUGUSTO DE SOUZA FROIS"><option value="CARLOS DANIEL CARVALHO FERREIRA NEVES"><option value="CARLOS DANIEL DOS SANTOS COSTA"><option value="CARLOS DE OLIVEIRA SOARES"><option value="CARLOS EWERTON FARIAS MIRANDA"><option value="CARLOS MAGNO DA SILVA MARTINS"><option value="CARLOS RODOLFO GOMES AZEVEDO"><option value="CAUA OSNI FURTADO DOS SANTOS"><option value="CHARLES WILL DO NASCIMENTO MONTEIRO"><option value="CLAUDIO RENAN PINHEIRO DA CUNHA"><option value="CLAYTON SOUSA CONTENTE DE OLIVEIRA"><option value="CLAYVER LEITE DO NASCIMENTO"><option value="CLEITON MORAIS COSTA"><option value="CLEUMIR DA ROSA CRUZ"><option value="CLEYTON NEDER MATOS DA SILVA"><option value="CLEYTON ROBERTO GOMES AZEVEDO"><option value="CRISTIAN MALATO MELO"><option value="DANIEL BAIA BORGES"><option value="DANIEL MACEDO OLIVEIRA"><option value="DANIEL MENDES BARBOSA"><option value="DANILO BARBOZA DA SILVA"><option value="DAVID CARDOSO FERREIRA"><option value="DAYANA DO ROSARIO NUNES"><option value="DHENNER DANIEL DA SILVA ALENCAR"><option value="EDER DE OLIVEIRA MAGALHAES"><option value="EDER JARDIM MIRANDA"><option value="EDIELSON HENRIQUE SILVA DA SILVA"><option value="EDILMO NAZARE LEAO"><option value="EDJAMESON DE SOUZA BARROSO"><option value="EDUARDO DA SILVA GONCALVES"><option value="EDUARDO FARIAS DE MELO"><option value="ELAINE CRISTINA MAIA SARMANHO"><option value="ELBERT TEIXEIRA DA SILVA"><option value="ELTON LEAO PROGENIO"><option value="EMANUELA GAIA GOMES"><option value="ERICA CRISTINI TEIXEIRA DA SILVA"><option value="ERICK DOS SANTOS LIMA"><option value="ERIK PINTO DA SILVA"><option value="ESTER BARROS ALVES"><option value="EVANDRO DO NASCIMENTO RODRIGUES"><option value="EVELYN MARCELI PEREIRA DE MIRANDA"><option value="EVERALDO CARDOSO DOS SANTOS"><option value="EVERSON DO NASCIMENTO SILVA"><option value="EWERTON JOSE DA SILVA CARLOS"><option value="FABIO DOS SANTOS CASTILHO JUNIOR"><option value="FABRICIO ALVES BRITO"><option value="FAGNER ALEXANDRE CARVALHO DE ARAUJO"><option value="FELIPE FONSECA DA CRUZ"><option value="FELIPE GABRIEL OLIVEIRA QUEIROZ"><option value="FELIPE SILVA DA SILVA"><option value="FERNANDO GOMES DA SILVA"><option value="FLAVIO PINHEIRO MAGALHAES"><option value="FRANCENILDO MACIEL DOS SANTOS"><option value="FRANCISCO ALCEMIR NOGUEIRA DA ROCHA"><option value="FRANCISCO PIRES FURTADO JUNIOR"><option value="GABRIEL EVANDRO LOUREIRO LIMA"><option value="GEOVANNA CAROLINE CONCEICAO MACIEL"><option value="GERCIANE KAMILLI GOMES ANDRADE"><option value="GLAUCIANE DE SOUZA MENDES"><option value="GLEISSO DALTRO SODRE DA SILVA"><option value="GRECE KELLY PINHEIRO DO CARMO"><option value="GUSTAVO EDUARDO SIQUEIRA PINHEIRO"><option value="GUSTAVO WILLAMIS AZEVEDO NASCIMENTO"><option value="HEBER MATHEUS SARDOEIRO LEAO"><option value="HEDRIA LORENA BARROS DOS SANTOS"><option value="HELBERTY PINTO FERREIRA"><option value="HELEN ROSE DE SOUZA LUZ"><option value="HELIO LUCAS DE SOUSA GONCALVES"><option value="HENRIQUE FERREIRA NASCIMENTO"><option value="HILTON CESAR DIAS ALVES FILHO"><option value="HUGO DENILSON DA SILVA TENORIO"><option value="HUGO JHONNATA ALVES CARDOSO"><option value="IGO DOS SANTOS ALMEIDA"><option value="IRIS CARDOSO DA CONCEICAO"><option value="IVO OEIRAS DA LUZ"><option value="JACQUELINE SILVA DO NASCIMENTO"><option value="JAILSON SILVA ALVES"><option value="JAIME VERAS DA SILVA JUNIOR"><option value="JAINE OHANA DE SOUZA LIMA"><option value="JAMILSON PEREIRA MACHADO"><option value="JARDEM JOSE ARAUJO RIBEIRO"><option value="JAYME CELSON BENTES CANTO"><option value="JAYSON MENDES TEIXEIRA"><option value="JEAN MARCELO SILVA ASSUNCAO"><option value="JEFFERSON CALDAS DA SILVA"><option value="JEFFERSON SOUZA DE SOUZA"><option value="JHENNIFER BEATRIZ PALHA DA SILVA"><option value="JHONATAN DA COSTA LIMA"><option value="JOAO PAULO DIAS RODRIGUES"><option value="JOAO VITOR LOUZEIRO COSTA"><option value="JOAO VITTOR SOARES LIMA"><option value="JOEMILSON TRINDADE FERREIRA"><option value="JOENILTON JOSE SALGADO"><option value="JONATHAN DIAS SENA"><option value="JONATHAS TEIXEIRA DOS SANTOS"><option value="JORGE LUIZ FERREIRA JUNIOR"><option value="JOSE ANTONIO DE CARVALHO FELIX"><option value="JOSE AUGUSTO NOGUEIRA COSTA"><option value="JOSE DE RIBAMAR DOS SANTOS SOUSA"><option value="JOSE FERNANDO SANTOS DE SOUZA"><option value="JOSE ORLANDO MACHADO DA SILVA"><option value="JOSE PINHEIRO PAIVA"><option value="JOSE RAIMUNDO MONTEIRO LIMA"><option value="JOSIAS CORREA CARDOSO"><option value="JOSIELI ARAGAO DA SILVA"><option value="JOSIMAR BRANQUINHO FERREIRA"><option value="JOSYANE REBECA CORREA DOS SANTOS"><option value="JULIANA BARATA DA SILVA"><option value="JULIANE SOUZA ARACATI"><option value="JUSTINO PAIVA"><option value="KARLISSE MACIEL MARTINS"><option value="KERVEN DOS SANTOS LIMA"><option value="KLEBESON FELIPE DA SILVA MENDONCA"><option value="KLEITON BORGES DE SOUZA"><option value="LAUDIONOR LEAO DA COSTA"><option value="LEANDRA CRISTINA OLIVEIRA DOS SANTOS MADUREIRA"><option value="LEANDRO FERREIRA LIMA"><option value="LEANDRO PINHEIRO DA VALLE SANTIAGO"><option value="LEONARDO FERREIRA GOMES"><option value="LEOSANDRO DOS SANTOS RIBEIRO"><option value="LORENE SUELLEN PEREIRA DO ESPIRITO SANTO"><option value="LORRANE CAROLINE CARVALHO DOS SANTOS"><option value="LUCAS HENRIQUE FERREIRA DE CASTRO"><option value="LUCIDIO ESTUMANO FERREIRA"><option value="LUIS VITOR MAGNO SILVA"><option value="LUISA PEREIRA ANDRADE"><option value="LUIZ CARLOS CASTRO LIRA"><option value="LUIZ CARLOS FERREIRA CASCAES"><option value="LUIZ HENRIQUE SERRA NEVES"><option value="LUIZA DE CRISTO MORAES DA SILVA"><option value="MAICOM LIMA DE QUEIROZ"><option value="MAIKON DO NASCIMENTO BRASIL"><option value="MARCELO JOSE MOREIRA ALMEIDA"><option value="MARCELO LETRA MORAES"><option value="MARCELY CRISTINE SOARES DA SILVA"><option value="MARCIA ADRIANE LIMA DOURADO"><option value="MARCIO ADALBERTO SANTOS DE OLIVEIRA"><option value="MARCIO JUNIOR CAMPOS DA PAIXAO"><option value="MARCOS ALEXANDRE SILVA RODRIGUES"><option value="MARCOS ANDRE DE SOUZA SOARES"><option value="MARCOS HENRIQUE BARBOSA DA SILVA COSTA"><option value="MARCOS JOSE CARDOSO SIQUEIRA"><option value="MARCOS THONY DIAS ANDRADE"><option value="MARCUS ELIAS OLIVEIRA BOTELHO"><option value="MARIA JOSE DOS SANTOS LIRA"><option value="MARK YURI BARBOSA FERREIRA"><option value="MARLON PINTO MOREIRA"><option value="MARLON WELLINSON MENDES CONCEICAO"><option value="MARTA HELENA LIMA DA SILVA"><option value="MATEUS LIMA DA SILVA"><option value="MATHEUS LIENDREO DA SILVA PEREIRA"><option value="MELISSA LEAO NASCIMENTO"><option value="MESSIAS NASCIMENTO SOLEDADE"><option value="MOISES EDUARDO PAIXAO COSTA"><option value="NATALIA BRITO AMBE"><option value="NILTON RODRIGUES FERREIRA"><option value="OTACILIO VIANA SARGES"><option value="PABLO ANTONIO SOUSA DOS SANTOS"><option value="PAULO CESAR DA SILVA RAMOS"><option value="PAULO DE TARSO FERREIRA NEVES"><option value="PAULO PERICLES MADUREIRA VILHENA"><option value="PAULO SERGIO DOS SANTOS SEABRA"><option value="PEDRO DE SOUSA LIMA"><option value="RAFAEL DAVID ALVES TELES"><option value="RAFAEL PEREIRA TAVARES"><option value="RAFAELA QUEIROZ DA SILVA"><option value="RAIMOEL DE SOUSA FERREIRA"><option value="RANGEL OLIVEIRA DA SILVA"><option value="RAYLSON DA SILVA TEIXEIRA"><option value="REGINA DA ROSA MARTINS"><option value="RENAN ALVES BRAGA"><option value="RENAN GABRIEL SANTOS DA SILVA"><option value="RENAN OLIVEIRA DA SILVA"><option value="RENAN OLIVEIRA SANTANA"><option value="RENATO DA CONCEICAO DA SILVA"><option value="RENATO GUIMARÃES MARVÃO"><option value="REYBSON COSTA SOUSA"><option value="RIAN PEDRO AMBE DOS SANTOS"><option value="ROBERT FELIPE SANTOS LIRA"><option value="ROBSON DA COSTA MONTEIRO"><option value="RODSON KAUA NAVEGANTE ARAUJO"><option value="ROMARIO LISBOA MARTINS"><option value="RONALDO PINHEIRO DOS SANTOS"><option value="RONALDO RAFAEL FERREIRA MONTEIRO"><option value="RONILDO ALVES SILVEIRA"><option value="ROSANGELA OLIVEIRA DE AVIZ"><option value="ROZALIA BAIA TRINDADE"><option value="RUAN DOS SANTOS MACEDO"><option value="RUY HELIO SOUZA DE MIRANDA"><option value="SABRINA NEVES DA SILVA"><option value="SANDRO MARCIO PEREIRA E PEREIRA"><option value="SARA CAROLINE BARROS DE ANDRADE"><option value="SEBASTIAO HENRIQUE MONTEIRO MARTINS"><option value="SHELDON RAVEL SOUZA MAIA"><option value="SIDNEY FARIAS DA CONCEICAO"><option value="SILVIO BITTENCOURT RAMOS"><option value="STEFANY FERNANDA DE LIMA DIAS"><option value="SUELLEN DE PAULA CONCEICAO TRINDADE"><option value="SUZIANE RIBEIRO DA SILVA"><option value="TALYSON HENRIQUE MORAES LOPES"><option value="TATIANE SILVA DA ROSA"><option value="TEREZINHA PINHEIRO MELO"><option value="THED PINHEIRO LISBOA"><option value="THIAGO PENHA DOS SANTOS"><option value="TIAGO PAIXAO COSTA"><option value="TOMAZ DE SOUZA VILA NOVA"><option value="ULISSES CRUZ DOS SANTOS"><option value="VINICIUS DE ALBUQUERQUE CARNEIRO"><option value="WAGNER RIBEIRO DOS SANTOS"><option value="WALBER MARTINS MESQUITA"><option value="WALDENOR DOS ANJOS NETO"><option value="WALDNEY JOAO PAIVA DE SENA"><option value="WALTER MARTINS DE LIMA"><option value="WELLINGTON CARLOS SILVA DE SOUSA FILHO"><option value="WELLINGTON DIEGO DA SILVA LARANJEIRA"><option value="WEVERTON ALVES DOS ANJOS"><option value="WILLIAM MOISES PALHA DA SILVA"><option value="YRLAN DAVID DA ROSA SANTOS">
-</datalist>
-</div>
+    <form id="formColaborador">
+        <div class="form-group">
+            <label for="nomeCompleto">Nome Completo *</label>
+            <input type="text" list="listaNomes" id="nomeCompleto" required autocomplete="off">
+            <datalist id="listaNomes">
+                <option value="ADALBERTO SANTANA RODRIGUES"><option value="ADRIAN CLAY MELO SILVA"><option value="ADRIAN LORRAN DOS SANTOS DA SILVA"><option value="ADRIANO DOS SANTOS MONTEIRO"><option value="ADRIANO JACKSON DE SOUZA LUZ"><option value="ALEKESANDRO DA CONCEICAO PASTANA"><option value="ALESSANDRA DA CONCEICAO PASTANA"><option value="ALESSANDRO ANDRADE DA SILVA"><option value="ALESSANDRO VEIGA DE SOUZA JUNIOR"><option value="ALEX CONCEICAO JERONIMO"><option value="ALEX TEODORO PIEDADE"><option value="ALEXANDRE DA SILVA OLIVEIRA"><option value="ALLYSON YAGO BARROS DE OLIVEIRA"><option value="ANA LUCIA VELASCO ANDRADE"><option value="ANA PAULA ALMEIDA FARIAS"><option value="ANANIAS MARINHO ARAUJO JUNIOR"><option value="ANDERSON ANDRE LIMA DA SILVA"><option value="ANDERSON BRUNO DE SOUZA SANTOS"><option value="ANDERSON DE MIRANDA DE CASTRO"><option value="ANDERSON PAULO FERREIRA PEREIRA"><option value="ANDREZA AMARAL MIRANDA"><option value="ANNA CLARA SARMENTO AIRES"><option value="ANTONIA ELCICLEIA LAMEIRA DO VALE"><option value="ANTONIO AGUINALDO DO NASCIMENTO JUNIOR"><option value="ANTONIO ANASTACIO MARQUES FILHO"><option value="ANTONIO CARLOS DE ASSUNCAO"><option value="ANTONIO FERNANDO DE SOUSA TOMAZ"><option value="ANTÔNIO JOSÉ GOMES MIRANDA"><option value="ANTONIO RODRIGO DE ALMEIDA ALMEIDA"><option value="ANTONIO SOUSA SALES"><option value="AQUILA DE SOUSA PAIVA"><option value="ARLIELSON SANTOS DE MORAES"><option value="ARTHUR SILVA QUARESMA"><option value="AUGUSTO SERGIO PIRES DOS SANTOS"><option value="BEATRIZ DO SOCORRO PEIXOTO RIBEIRO"><option value="BEATRIZ SILVA DE AMARAL"><option value="BENEDITO DOS SANTOS FERREIRA"><option value="BRENDO DIAS VIEIRA"><option value="BRUNO LAION MENDES ALVES"><option value="BRUNO NEVES DE SOUZA"><option value="CAIO SILVA DA MATA"><option value="CAMILY VITORIA DO ROSARIO NAVEGANTES"><option value="CARLOS AUGUSTO DE SOUZA FROIS"><option value="CARLOS DANIEL CARVALHO FERREIRA NEVES"><option value="CARLOS DANIEL DOS SANTOS COSTA"><option value="CARLOS DE OLIVEIRA SOARES"><option value="CARLOS EWERTON FARIAS MIRANDA"><option value="CARLOS MAGNO DA SILVA MARTINS"><option value="CARLOS RODOLFO GOMES AZEVEDO"><option value="CAUA OSNI FURTADO DOS SANTOS"><option value="CHARLES WILL DO NASCIMENTO MONTEIRO"><option value="CLAUDIO RENAN PINHEIRO DA CUNHA"><option value="CLAYTON SOUSA CONTENTE DE OLIVEIRA"><option value="CLAYVER LEITE DO NASCIMENTO"><option value="CLEITON MORAIS COSTA"><option value="CLEUMIR DA ROSA CRUZ"><option value="CLEYTON NEDER MATOS DA SILVA"><option value="CLEYTON ROBERTO GOMES AZEVEDO"><option value="CRISTIAN MALATO MELO"><option value="DANIEL BAIA BORGES"><option value="DANIEL MACEDO OLIVEIRA"><option value="DANIEL MENDES BARBOSA"><option value="DANILO BARBOZA DA SILVA"><option value="DAVID CARDOSO FERREIRA"><option value="DAYANA DO ROSARIO NUNES"><option value="DHENNER DANIEL DA SILVA ALENCAR"><option value="EDER DE OLIVEIRA MAGALHAES"><option value="EDER JARDIM MIRANDA"><option value="EDIELSON HENRIQUE SILVA DA SILVA"><option value="EDILMO NAZARE LEAO"><option value="EDJAMESON DE SOUZA BARROSO"><option value="EDUARDO DA SILVA GONCALVES"><option value="EDUARDO FARIAS DE MELO"><option value="ELAINE CRISTINA MAIA SARMANHO"><option value="ELBERT TEIXEIRA DA SILVA"><option value="ELTON LEAO PROGENIO"><option value="EMANUELA GAIA GOMES"><option value="ERICA CRISTINI TEIXEIRA DA SILVA"><option value="ERICK DOS SANTOS LIMA"><option value="ERIK PINTO DA SILVA"><option value="ESTER BARROS ALVES"><option value="EVANDRO DO NASCIMENTO RODRIGUES"><option value="EVELYN MARCELI PEREIRA DE MIRANDA"><option value="EVERALDO CARDOSO DOS SANTOS"><option value="EVERSON DO NASCIMENTO SILVA"><option value="EWERTON JOSE DA SILVA CARLOS"><option value="FABIO DOS SANTOS CASTILHO JUNIOR"><option value="FABRICIO ALVES BRITO"><option value="FAGNER ALEXANDRE CARVALHO DE ARAUJO"><option value="FELIPE FONSECA DA CRUZ"><option value="FELIPE GABRIEL OLIVEIRA QUEIROZ"><option value="FELIPE SILVA DA SILVA"><option value="FERNANDO GOMES DA SILVA"><option value="FLAVIO PINHEIRO MAGALHAES"><option value="FRANCENILDO MACIEL DOS SANTOS"><option value="FRANCISCO ALCEMIR NOGUEIRA DA ROCHA"><option value="FRANCISCO PIRES FURTADO JUNIOR"><option value="GABRIEL EVANDRO LOUREIRO LIMA"><option value="GEOVANNA CAROLINE CONCEICAO MACIEL"><option value="GERCIANE KAMILLI GOMES ANDRADE"><option value="GLAUCIANE DE SOUZA MENDES"><option value="GLEISSO DALTRO SODRE DA SILVA"><option value="GRECE KELLY PINHEIRO DO CARMO"><option value="GUSTAVO EDUARDO SIQUEIRA PINHEIRO"><option value="GUSTAVO WILLAMIS AZEVEDO NASCIMENTO"><option value="HEBER MATHEUS SARDOEIRO LEAO"><option value="HEDRIA LORENA BARROS DOS SANTOS"><option value="HELBERTY PINTO FERREIRA"><option value="HELEN ROSE DE SOUZA LUZ"><option value="HELIO LUCAS DE SOUSA GONCALVES"><option value="HENRIQUE FERREIRA NASCIMENTO"><option value="HILTON CESAR DIAS ALVES FILHO"><option value="HUGO DENILSON DA SILVA TENORIO"><option value="HUGO JHONNATA ALVES CARDOSO"><option value="IGO DOS SANTOS ALMEIDA"><option value="IRIS CARDOSO DA CONCEICAO"><option value="IVO OEIRAS DA LUZ"><option value="JACQUELINE SILVA DO NASCIMENTO"><option value="JAILSON SILVA ALVES"><option value="JAIME VERAS DA SILVA JUNIOR"><option value="JAINE OHANA DE SOUZA LIMA"><option value="JAMILSON PEREIRA MACHADO"><option value="JARDEM JOSE ARAUJO RIBEIRO"><option value="JAYME CELSON BENTES CANTO"><option value="JAYSON MENDES TEIXEIRA"><option value="JEAN MARCELO SILVA ASSUNCAO"><option value="JEFFERSON CALDAS DA SILVA"><option value="JEFFERSON SOUZA DE SOUZA"><option value="JHENNIFER BEATRIZ PALHA DA SILVA"><option value="JHONATAN DA COSTA LIMA"><option value="JOAO PAULO DIAS RODRIGUES"><option value="JOAO VITOR LOUZEIRO COSTA"><option value="JOAO VITTOR SOARES LIMA"><option value="JOEMILSON TRINDADE FERREIRA"><option value="JOEMILSON TRINDADE FERREIRA" value="JOENILTON JOSE SALGADO"><option value="JONATHAN DIAS SENA"><option value="JONATHAS TEIXEIRA DOS SANTOS"><option value="JORGE LUIZ FERREIRA JUNIOR"><option value="JOSE ANTONIO DE CARVALHO FELIX"><option value="JOSE AUGUSTO NOGUEIRA COSTA"><option value="JOSE DE RIBAMAR DOS SANTOS SOUSA"><option value="JOSE FERNANDO SANTOS DE SOUZA"><option value="JOSE ORLANDO MACHADO DA SILVA"><option value="JOSE PINHEIRO PAIVA"><option value="JOSE RAIMUNDO MONTEIRO LIMA"><option value="JOSIAS CORREA CARDOSO"><option value="JOSIELI ARAGAO DA SILVA"><option value="JOSIMAR BRANQUINHO FERREIRA"><option value="JOSYANE REBECA CORREA DOS SANTOS"><option value="JULIANA BARATA DA SILVA"><option value="JULIANE SOUZA ARACATI"><option value="JUSTINO PAIVA"><option value="KARLISSE MACIEL MARTINS"><option value="KERVEN DOS SANTOS LIMA"><option value="KLEBESON FELIPE DA SILVA MENDONCA"><option value="KLEITON BORGES DE SOUZA"><option value="LAUDIONOR LEAO DA COSTA"><option value="LEANDRA CRISTINA OLIVEIRA DOS SANTOS MADUREIRA"><option value="LEANDRO FERREIRA LIMA"><option value="LEANDRO PINHEIRO DA VALLE SANTIAGO"><option value="LEONARDO FERREIRA GOMES"><option value="LEOSANDRO DOS SANTOS RIBEIRO"><option value="LORENE SUELLEN PEREIRA DO ESPIRITO SANTO"><option value="LORRANE CAROLINE CARVALHO DOS SANTOS"><option value="LUCAS HENRIQUE FERREIRA DE CASTRO"><option value="LUCIDIO ESTUMANO FERREIRA"><option value="LUIS VITOR MAGNO SILVA"><option value="LUISA PEREIRA ANDRADE"><option value="LUIZ CARLOS CASTRO LIRA"><option value="LUIZ CARLOS FERREIRA CASCAES"><option value="LUIZ HENRIQUE SERRA NEVES"><option value="LUIZA DE CRISTO MORAES DA SILVA"><option value="MAICOM LIMA DE QUEIROZ"><option value="MAIKON DO NASCIMENTO BRASIL"><option value="MARCELO JOSE MOREIRA ALMEIDA"><option value="MARCELO LETRA MORAES"><option value="MARCELY CRISTINE SOARES DA SILVA"><option value="MARCIA ADRIANE LIMA DOURADO"><option value="MARCIO ADALBERTO SANTOS DE OLIVEIRA"><option value="MARCIO JUNIOR CAMPOS DA PAIXAO"><option value="MARCOS ALEXANDRE SILVA RODRIGUES"><option value="MARCOS ANDRE DE SOUZA SOARES"><option value="MARCOS HENRIQUE BARBOSA DA SILVA COSTA"><option value="MARCOS JOSE CARDOSO SIQUEIRA"><option value="MARCOS THONY DIAS ANDRADE"><option value="MARCUS ELIAS OLIVEIRA BOTELHO"><option value="MARIA JOSE DOS SANTOS LIRA"><option value="MARK YURI BARBOSA FERREIRA"><option value="MARLON PINTO MOREIRA"><option value="MARLON WELLINSON MENDES CONCEICAO"><option value="MARTA HELENA LIMA DA SILVA"><option value="MATEUS LIMA DA SILVA"><option value="MATHEUS LIENDREO DA SILVA PEREIRA"><option value="MELISSA LEAO NASCIMENTO"><option value="MESSIAS NASCIMENTO SOLEDADE"><option value="MOISES EDUARDO PAIXAO COSTA"><option value="NATALIA BRITO AMBE"><option value="NILTON RODRIGUES FERREIRA"><option value="OTACILIO VIANA SARGES"><option value="PABLO ANTONIO SOUSA DOS SANTOS"><option value="PAULO CESAR DA SILVA RAMOS"><option value="PAULO DE TARSO FERREIRA NEVES"><option value="PAULO PERICLES MADUREIRA VILHENA"><option value="PAULO SERGIO DOS SANTOS SEABRA"><option value="PEDRO DE SOUSA LIMA"><option value="RAFAEL DAVID ALVES TELES"><option value="RAFAEL PEREIRA TAVARES"><option value="RAFAELA QUEIROZ DA SILVA"><option value="RAIMOEL DE SOUSA FERREIRA"><option value="RANGEL OLIVEIRA DA SILVA"><option value="RAYLSON DA SILVA TEIXEIRA"><option value="REGINA DA ROSA MARTINS"><option value="RENAN ALVES BRAGA"><option value="RENAN GABRIEL SANTOS DA SILVA"><option value="RENAN OLIVEIRA DA SILVA"><option value="RENAN OLIVEIRA SANTANA"><option value="RENATO DA CONCEICAO DA SILVA"><option value="RENATO GUIMARÃES MARVÃO"><option value="REYBSON COSTA SOUSA"><option value="RIAN PEDRO AMBE DOS SANTOS"><option value="ROBERT FELIPE SANTOS LIRA"><option value="ROBSON DA COSTA MONTEIRO"><option value="RODSON KAUA NAVEGANTE ARAUJO"><option value="ROMARIO LISBOA MARTINS"><option value="RONALDO PINHEIRO DOS SANTOS"><option value="RONALDO RAFAEL FERREIRA MONTEIRO"><option value="RONILDO ALVES SILVEIRA"><option value="ROSANGELA OLIVEIRA DE AVIZ"><option value="ROZALIA BAIA TRINDADE"><option value="RUAN DOS SANTOS MACEDO"><option value="RUY HELIO SOUZA DE MIRANDA"><option value="SABRINA NEVES DA SILVA"><option value="SANDRO MARCIO PEREIRA E PEREIRA"><option value="SARA CAROLINE BARROS DE ANDRADE"><option value="SEBASTIAO HENRIQUE MONTEIRO MARTINS"><option value="SHELDON RAVEL SOUZA MAIA"><option value="SIDNEY FARIAS DA CONCEICAO"><option value="SILVIO BITTENCOURT RAMOS"><option value="STEFANY FERNANDA DE LIMA DIAS"><option value="SUELLEN DE PAULA CONCEICAO TRINDADE"><option value="SUZIANE RIBEIRO DA SILVA"><option value="TALYSON HENRIQUE MORAES LOPES"><option value="TATIANE SILVA DA ROSA"><option value="TEREZINHA PINHEIRO MELO"><option value="THED PINHEIRO LISBOA"><option value="THIAGO PENHA DOS SANTOS"><option value="TIAGO PAIXAO COSTA"><option value="TOMAZ DE SOUZA VILA NOVA"><option value="ULISSES CRUZ DOS SANTOS"><option value="VINICIUS DE ALBUQUERQUE CARNEIRO"><option value="WAGNER RIBEIRO DOS SANTOS"><option value="WALBER MARTINS MESQUITA"><option value="WALDENOR DOS ANJOS NETO"><option value="WALDNEY JOAO PAIVA DE SENA"><option value="WALTER MARTINS DE LIMA"><option value="WELLINGTON CARLOS SILVA DE SOUSA FILHO"><option value="WELLINGTON DIEGO DA SILVA LARANJEIRA"><option value="WEVERTON ALVES DOS ANJOS"><option value="WILLIAM MOISES PALHA DA SILVA"><option value="YRLAN DAVID DA ROSA SANTOS">
+            </datalist>
+        </div>
 
-<div class="form-group">
-<label>Matrícula *</label>
-<input type="text" id="matricula" readonly>
-</div>
+        <div class="form-group">
+            <label for="matricula">Matrícula *</label>
+            <input type="text" id="matricula" readonly placeholder="Preenchido automaticamente">
+        </div>
 
-<div class="form-group">
-<label>CPF *</label>
-<input type="text" id="cpf" maxlength="14" required>
-</div>
+        <div class="form-group">
+            <label for="cpf">CPF *</label>
+            <input type="text" id="cpf" maxlength="14" required placeholder="000.000.000-00">
+        </div>
 
+        <div class="form-group">
+            <label for="formacaoTexto">Nível de Formação Acadêmica *</label>
+            <select id="formacaoTexto" required>
+                <option value="">Selecione uma opção</option>
+                <option value="Até a 4ª Série">Até a 4ª Série</option>
+                <option value="Ensino Fundamental">Ensino Fundamental</option>
+                <option value="Ensino Médio">Ensino Médio</option>
+                <option value="Ensino Técnico Cursando">Ensino Técnico Cursando</option>
+                <option value="Ensino Técnico Completo">Ensino Técnico Completo</option>
+                <option value="Ensino Superior Cursando">Ensino Superior Cursando</option>
+                <option value="Ensino Superior Completo">Ensino Superior Completo</option>
+            </select>
 
-<div class="form-group">
+            <label style="margin-top:20px" for="formacaoFotos">Anexar Comprovantes (Declaração ou Certificado) *</label>
+            <input type="file" id="formacaoFotos" multiple accept="image/*">
+            <div class="preview" id="previewFormacao"></div>
+        </div>
 
-    <label>Nível de Formação Acadêmica *</label>
+        <div class="form-group">
+            <label for="qualificacoesTexto">Qualificações (Cursos Adicionais)</label>
+            <textarea id="qualificacoesTexto" placeholder="Descreva os cursos adicionais (opcional)..."></textarea>
+            
+            <label style="margin-top:10px" for="qualificacoesFotos">Anexar Comprovantes das Qualificações (Opcional)</label>
+            <input type="file" id="qualificacoesFotos" multiple accept="image/*">
+            <div class="preview" id="previewQualificacoes"></div>
+        </div>
 
-    <select id="formacaoTexto" required
-        style="width:100%;
-               padding:12px;
-               border:2px solid #d8e8ff;
-               border-radius:10px;
-               background:#fff;
-               font-size:15px;">
-
-        <option value="">
-            Selecione uma opção
-        </option>
-
-        <option value="Até a 4ª Série">
-            Até a 4ª Série
-        </option>
-
-        <option value="Ensino Fundamental">
-            Ensino Fundamental
-        </option>
-
-        <option value="Ensino Médio">
-            Ensino Médio
-        </option>
-
-        <option value="Ensino Técnico Cursando">
-            Ensino Técnico Cursando
-        </option>
-
-        <option value="Ensino Técnico Completo">
-            Ensino Técnico Completo
-        </option>
-
-        <option value="Ensino Superior Cursando">
-            Ensino Superior Cursando
-        </option>
-
-        <option value="Ensino Superior Completo">
-            Ensino Superior Completo
-        </option>
-
-    </select>
-
-    <label style="margin-top:10px">
-        Anexar Comprovantes (Declaração ou Certificado) *
-    </label>
-
-    <input type="file"
-           id="formacaoFotos"
-           multiple
-           accept="image/*">
-
-    <div class="preview" id="previewFormacao"></div>
-
-
-
-<div class="form-group">
-<label>Qualificações (Cursos Adicionais ) *</label>
-<textarea id="qualificacoesTexto" required></textarea>
-<input type="file" id="qualificacoesFotos" multiple accept="image/*">
-<div class="preview" id="previewQualificacoes"></div>
-</div>
-
-</div>
-
-<button type="submit">Enviar Cadastro</button>
-</form>
+        <button type="submit">Enviar Cadastro</button>
+    </form>
 </div>
 
 <script>
 const colaboradores = {"ADALBERTO SANTANA RODRIGUES": "501", "ADRIAN CLAY MELO SILVA": "537", "ADRIAN LORRAN DOS SANTOS DA SILVA": "582", "ADRIANO DOS SANTOS MONTEIRO": "480", "ADRIANO JACKSON DE SOUZA LUZ": "276", "ALEKESANDRO DA CONCEICAO PASTANA": "391", "ALESSANDRA DA CONCEICAO PASTANA": "336", "ALESSANDRO ANDRADE DA SILVA": "161", "ALESSANDRO VEIGA DE SOUZA JUNIOR": "479", "ALEX CONCEICAO JERONIMO": "492", "ALEX TEODORO PIEDADE": "454", "ALEXANDRE DA SILVA OLIVEIRA": "376", "ALLYSON YAGO BARROS DE OLIVEIRA": "523", "ANA LUCIA VELASCO ANDRADE": "578", "ANA PAULA ALMEIDA FARIAS": "620", "ANANIAS MARINHO ARAUJO JUNIOR": "443", "ANDERSON ANDRE LIMA DA SILVA": "119", "ANDERSON BRUNO DE SOUZA SANTOS": "560", "ANDERSON DE MIRANDA DE CASTRO": "404", "ANDERSON PAULO FERREIRA PEREIRA": "392", "ANDREZA AMARAL MIRANDA": "250", "ANNA CLARA SARMENTO AIRES": "597", "ANTONIA ELCICLEIA LAMEIRA DO VALE": "485", "ANTONIO AGUINALDO DO NASCIMENTO JUNIOR": "312", "ANTONIO ANASTACIO MARQUES FILHO": "301", "ANTONIO CARLOS DE ASSUNCAO": "20", "ANTONIO FERNANDO DE SOUSA TOMAZ": "462", "ANTÔNIO JOSÉ GOMES MIRANDA": "658", "ANTONIO RODRIGO DE ALMEIDA ALMEIDA": "482", "ANTONIO SOUSA SALES": "32", "AQUILA DE SOUSA PAIVA": "548", "ARLIELSON SANTOS DE MORAES": "420", "ARTHUR SILVA QUARESMA": "358", "AUGUSTO SERGIO PIRES DOS SANTOS": "490", "BEATRIZ DO SOCORRO PEIXOTO RIBEIRO": "536", "BEATRIZ SILVA DE AMARAL": "570", "BENEDITO DOS SANTOS FERREIRA": "334", "BRENDO DIAS VIEIRA": "476", "BRUNO LAION MENDES ALVES": "474", "BRUNO NEVES DE SOUZA": "599", "CAIO SILVA DA MATA": "531", "CAMILY VITORIA DO ROSARIO NAVEGANTES": "572", "CARLOS AUGUSTO DE SOUZA FROIS": "401", "CARLOS DANIEL CARVALHO FERREIRA NEVES": "600", "CARLOS DANIEL DOS SANTOS COSTA": "567", "CARLOS DE OLIVEIRA SOARES": "167", "CARLOS EWERTON FARIAS MIRANDA": "112", "CARLOS MAGNO DA SILVA MARTINS": "168", "CARLOS RODOLFO GOMES AZEVEDO": "191", "CAUA OSNI FURTADO DOS SANTOS": "585", "CHARLES WILL DO NASCIMENTO MONTEIRO": "400", "CLAUDIO RENAN PINHEIRO DA CUNHA": "566", "CLAYTON SOUSA CONTENTE DE OLIVEIRA": "540", "CLAYVER LEITE DO NASCIMENTO": "534", "CLEITON MORAIS COSTA": "557", "CLEUMIR DA ROSA CRUZ": "406", "CLEYTON NEDER MATOS DA SILVA": "652", "CLEYTON ROBERTO GOMES AZEVEDO": "146", "CRISTIAN MALATO MELO": "221", "DANIEL BAIA BORGES": "187", "DANIEL MACEDO OLIVEIRA": "511", "DANIEL MENDES BARBOSA": "562", "DANILO BARBOZA DA SILVA": "502", "DAVID CARDOSO FERREIRA": "496", "DAYANA DO ROSARIO NUNES": "675", "DHENNER DANIEL DA SILVA ALENCAR": "412", "EDER DE OLIVEIRA MAGALHAES": "384", "EDER JARDIM MIRANDA": "672", "EDIELSON HENRIQUE SILVA DA SILVA": "506", "EDILMO NAZARE LEAO": "414", "EDJAMESON DE SOUZA BARROSO": "290", "EDUARDO DA SILVA GONCALVES": "433", "EDUARDO FARIAS DE MELO": "434", "ELAINE CRISTINA MAIA SARMANHO": "521", "ELBERT TEIXEIRA DA SILVA": "272", "ELTON LEAO PROGENIO": "278", "EMANUELA GAIA GOMES": "584", "ERICA CRISTINI TEIXEIRA DA SILVA": "549", "ERICK DOS SANTOS LIMA": "478", "ERIK PINTO DA SILVA": "509", "ESTER BARROS ALVES": "573", "EVANDRO DO NASCIMENTO RODRIGUES": "504", "EVELYN MARCELI PEREIRA DE MIRANDA": "520", "EVERALDO CARDOSO DOS SANTOS": "472", "EVERSON DO NASCIMENTO SILVA": "445", "EWERTON JOSE DA SILVA CARLOS": "546", "FABIO DOS SANTOS CASTILHO JUNIOR": "673", "FABRICIO ALVES BRITO": "430", "FAGNER ALEXANDRE CARVALHO DE ARAUJO": "246", "FELIPE FONSECA DA CRUZ": "574", "FELIPE GABRIEL OLIVEIRA QUEIROZ": "667", "FELIPE SILVA DA SILVA": "619", "FERNANDO GOMES DA SILVA": "255", "FLAVIO PINHEIRO MAGALHAES": "393", "FRANCENILDO MACIEL DOS SANTOS": "14", "FRANCISCO ALCEMIR NOGUEIRA DA ROCHA": "495", "FRANCISCO PIRES FURTADO JUNIOR": "192", "GABRIEL EVANDRO LOUREIRO LIMA": "633", "GEOVANNA CAROLINE CONCEICAO MACIEL": "580", "GERCIANE KAMILLI GOMES ANDRADE": "273", "GLAUCIANE DE SOUZA MENDES": "435", "GLEISSO DALTRO SODRE DA SILVA": "261", "GRECE KELLY PINHEIRO DO CARMO": "313", "GUSTAVO EDUARDO SIQUEIRA PINHEIRO": "483", "GUSTAVO WILLAMIS AZEVEDO NASCIMENTO": "295", "HEBER MATHEUS SARDOEIRO LEAO": "538", "HEDRIA LORENA BARROS DOS SANTOS": "347", "HELBERTY PINTO FERREIRA": "527", "HELEN ROSE DE SOUZA LUZ": "46", "HELIO LUCAS DE SOUSA GONCALVES": "555", "HENRIQUE FERREIRA NASCIMENTO": "601", "HILTON CESAR DIAS ALVES FILHO": "280", "HUGO DENILSON DA SILVA TENORIO": "545", "HUGO JHONNATA ALVES CARDOSO": "415", "IGO DOS SANTOS ALMEIDA": "522", "IRIS CARDOSO DA CONCEICAO": "469", "IVO OEIRAS DA LUZ": "97", "JACQUELINE SILVA DO NASCIMENTO": "565", "JAILSON SILVA ALVES": "475", "JAIME VERAS DA SILVA JUNIOR": "117", "JAINE OHANA DE SOUZA LIMA": "245", "JAMILSON PEREIRA MACHADO": "676", "JARDEM JOSE ARAUJO RIBEIRO": "463", "JAYME CELSON BENTES CANTO": "638", "JAYSON MENDES TEIXEIRA": "653", "JEAN MARCELO SILVA ASSUNCAO": "310", "JEFFERSON CALDAS DA SILVA": "66", "JEFFERSON SOUZA DE SOUZA": "616", "JHENNIFER BEATRIZ PALHA DA SILVA": "348", "JHONATAN DA COSTA LIMA": "304", "JOAO PAULO DIAS RODRIGUES": "453", "JOAO VITOR LOUZEIRO COSTA": "220", "JOAO VITTOR SOARES LIMA": "281", "JOEMILSON TRINDADE FERREIRA": "422", "JOENILTON JOSE SALGADO": "1", "JONATHAN DIAS SENA": "650", "JONATHAS TEIXEIRA DOS SANTOS": "626", "JORGE LUIZ FERREIRA JUNIOR": "486", "JOSE ANTONIO DE CARVALHO FELIX": "464", "JOSE AUGUSTO NOGUEIRA COSTA": "303", "JOSE DE RIBAMAR DOS SANTOS SOUSA": "487", "JOSE FERNANDO SANTOS DE SOUZA": "423", "JOSE ORLANDO MACHADO DA SILVA": "615", "JOSE PINHEIRO PAIVA": "544", "JOSE RAIMUNDO MONTEIRO LIMA": "488", "JOSIAS CORREA CARDOSO": "449", "JOSIELI ARAGAO DA SILVA": "671", "JOSIMAR BRANQUINHO FERREIRA": "568", "JOSYANE REBECA CORREA DOS SANTOS": "408", "JULIANA BARATA DA SILVA": "622", "JULIANE SOUZA ARACATI": "305", "JUSTINO PAIVA": "317", "KARLISSE MACIEL MARTINS": "651", "KERVEN DOS SANTOS LIMA": "654", "KLEBESON FELIPE DA SILVA MENDONCA": "634", "KLEITON BORGES DE SOUZA": "257", "LAUDIONOR LEAO DA COSTA": "269", "LEANDRA CRISTINA OLIVEIRA DOS SANTOS MADUREIRA": "564", "LEANDRO FERREIRA LIMA": "417", "LEANDRO PINHEIRO DA VALLE SANTIAGO": "636", "LEONARDO FERREIRA GOMES": "394", "LEOSANDRO DOS SANTOS RIBEIRO": "326", "LORENE SUELLEN PEREIRA DO ESPIRITO SANTO": "217", "LORRANE CAROLINE CARVALHO DOS SANTOS": "571", "LUCAS HENRIQUE FERREIRA DE CASTRO": "576", "LUCIDIO ESTUMANO FERREIRA": "151", "LUIS VITOR MAGNO SILVA": "318", "LUISA PEREIRA ANDRADE": "262", "LUIZ CARLOS CASTRO LIRA": "656", "LUIZ CARLOS FERREIRA CASCAES": "466", "LUIZ HENRIQUE SERRA NEVES": "259", "LUIZA DE CRISTO MORAES DA SILVA": "218", "MAICOM LIMA DE QUEIROZ": "500", "MAIKON DO NASCIMENTO BRASIL": "448", "MARCELO JOSE MOREIRA ALMEIDA": "378", "MARCELO LETRA MORAES": "387", "MARCELY CRISTINE SOARES DA SILVA": "299", "MARCIA ADRIANE LIMA DOURADO": "216", "MARCIO ADALBERTO SANTOS DE OLIVEIRA": "388", "MARCIO JUNIOR CAMPOS DA PAIXAO": "419", "MARCOS ALEXANDRE SILVA RODRIGUES": "330", "MARCOS ANDRE DE SOUZA SOARES": "228", "MARCOS HENRIQUE BARBOSA DA SILVA COSTA": "554", "MARCOS JOSE CARDOSO SIQUEIRA": "357", "MARCOS THONY DIAS ANDRADE": "503", "MARCUS ELIAS OLIVEIRA BOTELHO": "372", "MARIA JOSE DOS SANTOS LIRA": "436", "MARK YURI BARBOSA FERREIRA": "635", "MARLON PINTO MOREIRA": "514", "MARLON WELLINSON MENDES CONCEICAO": "477", "MARTA HELENA LIMA DA SILVA": "586", "MATEUS LIMA DA SILVA": "296", "MATHEUS LIENDREO DA SILVA PEREIRA": "308", "MELISSA LEAO NASCIMENTO": "596", "MESSIAS NASCIMENTO SOLEDADE": "499", "MOISES EDUARDO PAIXAO COSTA": "351", "NATALIA BRITO AMBE": "569", "NILTON RODRIGUES FERREIRA": "427", "OTACILIO VIANA SARGES": "446", "PABLO ANTONIO SOUSA DOS SANTOS": "364", "PAULO CESAR DA SILVA RAMOS": "129", "PAULO DE TARSO FERREIRA NEVES": "498", "PAULO PERICLES MADUREIRA VILHENA": "346", "PAULO SERGIO DOS SANTOS SEABRA": "489", "PEDRO DE SOUSA LIMA": "331", "RAFAEL DAVID ALVES TELES": "525", "RAFAEL PEREIRA TAVARES": "444", "RAFAELA QUEIROZ DA SILVA": "669", "RAIMOEL DE SOUSA FERREIRA": "547", "RANGEL OLIVEIRA DA SILVA": "458", "RAYLSON DA SILVA TEIXEIRA": "604", "REGINA DA ROSA MARTINS": "206", "RENAN ALVES BRAGA": "552", "RENAN GABRIEL SANTOS DA SILVA": "467", "RENAN OLIVEIRA DA SILVA": "396", "RENAN OLIVEIRA SANTANA": "424", "RENATO DA CONCEICAO DA SILVA": "389", "RENATO GUIMARÃES MARVÃO": "629", "REYBSON COSTA SOUSA": "365", "RIAN PEDRO AMBE DOS SANTOS": "447", "ROBERT FELIPE SANTOS LIRA": "418", "ROBSON DA COSTA MONTEIRO": "380", "RODSON KAUA NAVEGANTE ARAUJO": "360", "ROMARIO LISBOA MARTINS": "668", "RONALDO PINHEIRO DOS SANTOS": "513", "RONALDO RAFAEL FERREIRA MONTEIRO": "134", "RONILDO ALVES SILVEIRA": "532", "ROSANGELA OLIVEIRA DE AVIZ": "285", "ROZALIA BAIA TRINDADE": "327", "RUAN DOS SANTOS MACEDO": "321", "RUY HELIO SOUZA DE MIRANDA": "628", "SABRINA NEVES DA SILVA": "328", "SANDRO MARCIO PEREIRA E PEREIRA": "247", "SARA CAROLINE BARROS DE ANDRADE": "553", "SEBASTIAO HENRIQUE MONTEIRO MARTINS": "76", "SHELDON RAVEL SOUZA MAIA": "581", "SIDNEY FARIAS DA CONCEICAO": "473", "SILVIO BITTENCOURT RAMOS": "559", "STEFANY FERNANDA DE LIMA DIAS": "670", "SUELLEN DE PAULA CONCEICAO TRINDADE": "190", "SUZIANE RIBEIRO DA SILVA": "657", "TALYSON HENRIQUE MORAES LOPES": "625", "TATIANE SILVA DA ROSA": "416", "TEREZINHA PINHEIRO MELO": "643", "THED PINHEIRO LISBOA": "367", "THIAGO PENHA DOS SANTOS": "637", "TIAGO PAIXAO COSTA": "533", "TOMAZ DE SOUZA VILA NOVA": "292", "ULISSES CRUZ DOS SANTOS": "9", "VINICIUS DE ALBUQUERQUE CARNEIRO": "508", "WAGNER RIBEIRO DOS SANTOS": "461", "WALBER MARTINS MESQUITA": "341", "WALDENOR DOS ANJOS NETO": "431", "WALDNEY JOAO PAIVA DE SENA": "543", "WALTER MARTINS DE LIMA": "152", "WELLINGTON CARLOS SILVA DE SOUSA FILHO": "333", "WELLINGTON DIEGO DA SILVA LARANJEIRA": "219", "WEVERTON ALVES DOS ANJOS": "510", "WILLIAM MOISES PALHA DA SILVA": "605", "YRLAN DAVID DA ROSA SANTOS": "344"};
-nomeCompleto.addEventListener('input',()=>matricula.value=colaboradores[nomeCompleto.value]||'');
 
-let q=[],f=[];
+const nomeCompleto = document.getElementById('nomeCompleto');
+const matricula = document.getElementById('matricula');
+const cpf = document.getElementById('cpf');
+const formColaborador = document.getElementById('formColaborador');
 
-cpf.addEventListener('input',e=>{
- let v=e.target.value.replace(/\D/g,'');
- v=v.replace(/(\d{3})(\d)/,'$1.$2');
- v=v.replace(/(\d{3})(\d)/,'$1.$2');
- v=v.replace(/(\d{3})(\d{1,2})$/,'$1-$2');
- e.target.value=v;
+nomeCompleto.addEventListener('input', () => {
+    matricula.value = colaboradores[nomeCompleto.value.toUpperCase()] || '';
 });
 
-function setup(id,pid,arr){
- document.getElementById(id).addEventListener('change',function(){
- arr.push(...Array.from(this.files));
- render(arr,pid);
- this.value='';
- });
+let q = [], f = [];
+
+cpf.addEventListener('input', e => {
+    let v = e.target.value.replace(/\D/g, '');
+    v = v.replace(/(\d{3})(\d)/, '$1.$2');
+    v = v.replace(/(\d{3})(\d)/, '$1.$2');
+    v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    e.target.value = v;
+});
+
+function setup(id, pid, arr) {
+    document.getElementById(id).addEventListener('change', function() {
+        arr.push(...Array.from(this.files));
+        render(arr, pid);
+        this.value = '';
+    });
 }
 
-function render(arr,pid){
- const p=document.getElementById(pid); p.innerHTML='';
- arr.forEach((file,i)=>{
-  const r=new FileReader();
-  r.onload=e=>{
-   const d=document.createElement('div');
-   d.className='preview-item';
-   d.innerHTML='<img src="'+e.target.result+'">';
-   const b=document.createElement('button');
-   b.type='button'; b.className='btn-remover'; b.innerHTML='✖';
-   b.onclick=()=>{arr.splice(i,1);render(arr,pid);};
-   d.appendChild(b); p.appendChild(d);
-  };
-  r.readAsDataURL(file);
- });
+function render(arr, pid) {
+    const p = document.getElementById(pid); 
+    p.innerHTML = '';
+    arr.forEach((file, i) => {
+        const d = document.createElement('div');
+        d.className = 'preview-item';
+        
+        const imgUrl = URL.createObjectURL(file);
+        d.innerHTML = `<img src="${imgUrl}">`;
+        
+        const b = document.createElement('button');
+        b.type = 'button'; 
+        b.className = 'btn-remover'; 
+        b.innerHTML = '✖';
+        b.onclick = () => {
+            arr.splice(i, 1);
+            URL.revokeObjectURL(imgUrl);
+            render(arr, pid);
+        };
+        d.appendChild(b); 
+        p.appendChild(d);
+    });
 }
 
-setup('qualificacoesFotos','previewQualificacoes',q);
-setup('formacaoFotos','previewFormacao',f);
+setup('qualificacoesFotos', 'previewQualificacoes', q);
+setup('formacaoFotos', 'previewFormacao', f);
 
-function b64(file){return new Promise(r=>{let fr=new FileReader();fr.onload=()=>r(fr.result);fr.readAsDataURL(file);});}
+function b64(file) {
+    return new Promise((resolve, reject) => {
+        let fr = new FileReader();
+        fr.onload = () => resolve(fr.result);
+        fr.onerror = reject;
+        fr.readAsDataURL(file);
+    });
+}
 
 formColaborador.addEventListener('submit', async e => {
-
     e.preventDefault();
+
+    if (!matricula.value) {
+        alert("Por favor, selecione um colaborador válido da lista.");
+        return;
+    }
 
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
-
     let y = 20;
 
-    function verificarQuebra(espacoNecessario = 20){
-        if(y + espacoNecessario > 280){
+    function verificarQuebra(espacoNecessario = 20) {
+        if (y + espacoNecessario > 280) {
             pdf.addPage();
             y = 20;
         }
     }
 
-    function adicionarTitulo(texto){
+    function adicionarTitulo(texto) {
         verificarQuebra(20);
-
         pdf.setFontSize(16);
         pdf.setFont(undefined, 'bold');
         pdf.text(texto, 105, y, { align: 'center' });
-
         y += 8;
-
-        pdf.setDrawColor(180,180,180);
+        pdf.setDrawColor(180, 180, 180);
         pdf.line(20, y, 190, y);
-
         y += 10;
-
         pdf.setFont(undefined, 'normal');
     }
 
     // CABEÇALHO
-
     adicionarTitulo("CADASTRO DE COLABORADOR");
-
     pdf.setFontSize(11);
-
     pdf.text("Nome:", 20, y);
     pdf.text(nomeCompleto.value, 55, y);
     y += 8;
-
     pdf.text("Matrícula:", 20, y);
     pdf.text(matricula.value, 55, y);
     y += 8;
-
     pdf.text("CPF:", 20, y);
     pdf.text(cpf.value, 55, y);
     y += 15;
 
-    // QUALIFICAÇÕES
-
-    adicionarTitulo("QUALIFICAÇÕES");
-
-    pdf.setFontSize(11);
-
-    const qualificacoesLinhas =
-        pdf.splitTextToSize(
-            qualificacoesTexto.value,
-            170
-        );
-
-    pdf.text(qualificacoesLinhas, 20, y);
-
-    y += (qualificacoesLinhas.length * 6) + 10;
-
-    pdf.setFont(undefined, 'bold');
-    pdf.text("Comprovantes das Qualificações:", 20, y);
-    pdf.setFont(undefined, 'normal');
-
-    y += 10;
-
-    let coluna = 0;
-    let posX = 20;
-
-    for(const arquivo of q){
-
-        verificarQuebra(60);
-
-        const img = await b64(arquivo);
-
-        pdf.addImage(
-            img,
-            'JPEG',
-            posX,
-            y,
-            75,
-            55
-        );
-
-        coluna++;
-
-        if(coluna === 2){
-            coluna = 0;
-            posX = 20;
-            y += 65;
-        } else {
-            posX = 110;
+    // QUALIFICAÇÕES (APENAS SE PREENCHIDO)
+    const textoQualificacoes = document.getElementById('qualificacoesTexto').value.trim();
+    if (textoQualificacoes || q.length > 0) {
+        adicionarTitulo("QUALIFICAÇÕES");
+        pdf.setFontSize(11);
+        
+        if (textoQualificacoes) {
+            const qualificacoesLinhas = pdf.splitTextToSize(textoQualificacoes, 170);
+            pdf.text(qualificacoesLinhas, 20, y);
+            y += (qualificacoesLinhas.length * 6) + 10;
         }
-    }
 
-    if(coluna !== 0){
-        y += 65;
+        if (q.length > 0) {
+            pdf.setFont(undefined, 'bold');
+            pdf.text("Comprovantes das Qualificações:", 20, y);
+            pdf.setFont(undefined, 'normal');
+            y += 10;
+
+            let coluna = 0;
+            let posX = 20;
+            for (const arquivo of q) {
+                verificarQuebra(60);
+                try {
+                    const img = await b64(arquivo);
+                    pdf.addImage(img, 'JPEG', posX, y, 75, 55, undefined, 'FAST');
+                    coluna++;
+                    if (coluna === 2) {
+                        coluna = 0;
+                        posX = 20;
+                        y += 65;
+                    } else {
+                        posX = 110;
+                    }
+                } catch (err) {
+                    console.error("Erro ao processar imagem de qualificação", err);
+                }
+            }
+            if (coluna !== 0) y += 65;
+        }
     }
 
     // FORMAÇÃO
-
     adicionarTitulo("FORMAÇÃO ACADÊMICA");
-
-    const formacaoLinhas =
-        pdf.splitTextToSize(
-            formacaoTexto.value,
-            170
-        );
-
+    const formacaoLinhas = pdf.splitTextToSize(document.getElementById('formacaoTexto').value, 170);
     pdf.text(formacaoLinhas, 20, y);
-
     y += (formacaoLinhas.length * 6) + 10;
 
-    pdf.setFont(undefined, 'bold');
-    pdf.text("Comprovantes da Formação:", 20, y);
-    pdf.setFont(undefined, 'normal');
+    if (f.length > 0) {
+        pdf.setFont(undefined, 'bold');
+        pdf.text("Comprovantes da Formação:", 20, y);
+        pdf.setFont(undefined, 'normal');
+        y += 10;
 
-    y += 10;
-
-    coluna = 0;
-    posX = 20;
-
-    for(const arquivo of f){
-
-        verificarQuebra(60);
-
-        const img = await b64(arquivo);
-
-        pdf.addImage(
-            img,
-            'JPEG',
-            posX,
-            y,
-            75,
-            55
-        );
-
-        coluna++;
-
-        if(coluna === 2){
-            coluna = 0;
-            posX = 20;
-            y += 65;
-        } else {
-            posX = 110;
+        let coluna = 0;
+        let posX = 20;
+        for (const arquivo of f) {
+            verificarQuebra(60);
+            try {
+                const img = await b64(arquivo);
+                pdf.addImage(img, 'JPEG', posX, y, 75, 55, undefined, 'FAST');
+                coluna++;
+                if (coluna === 2) {
+                    coluna = 0;
+                    posX = 20;
+                    y += 65;
+                } else {
+                    posX = 110;
+                }
+            } catch (err) {
+                console.error("Erro ao processar imagem de formação", err);
+            }
         }
-    }
-
-    if(coluna !== 0){
-        y += 65;
+        if (coluna !== 0) y += 65;
     }
 
     // RODAPÉ
-
     verificarQuebra(20);
-
-    pdf.setDrawColor(180,180,180);
+    pdf.setDrawColor(180, 180, 180);
     pdf.line(20, y, 190, y);
-
     y += 10;
-
     pdf.setFontSize(10);
-
     const dataAtual = new Date();
-
-    pdf.text(
-        "Documento gerado em: " +
-        dataAtual.toLocaleDateString('pt-BR') +
-        " às " +
-        dataAtual.toLocaleTimeString('pt-BR'),
-        20,
-        y
-    );
+    pdf.text("Documento gerado em: " + dataAtual.toLocaleDateString('pt-BR') + " às " + dataAtual.toLocaleTimeString('pt-BR'), 20, y);
 
     // SALVAR PDF
-
-    pdf.save(
-        'Cadastro_' +
-        nomeCompleto.value.replace(/\s+/g,'_') +
-        '.pdf'
-    );
+    pdf.save('Cadastro_' + nomeCompleto.value.replace(/\s+/g, '_') + '.pdf');
 
     // ABRIR WHATSAPP
-
     setTimeout(() => {
-
-        window.open(
-            'https://wa.me/559184198540?text=Cadastro%20gerado.%20Favor%20anexar%20o%20PDF.',
-            '_blank'
-        );
-
+        window.open('https://wa.me/559184198540?text=Cadastro%20gerado.%20Favor%20anexar%20o%20PDF.', '_blank');
     }, 1000);
-
 });
 </script>
 </body>
